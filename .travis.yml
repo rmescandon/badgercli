@@ -1,0 +1,20 @@
+language: go
+go_import_path: github.com/rmescandon/badgercli
+go:        
+  - 1.10
+
+env:
+  matrix:
+    - TEST_SUITE="--static"
+    - TEST_SUITE="--unit"
+
+git:
+  quiet: true
+
+install:
+  - echo $GOPATH
+  - echo "Remaining install is done by the test script."
+  - true
+
+script:
+  - sh -v ./run-checks $TEST_SUITE
